@@ -2,5 +2,5 @@
 
 
 Clases terminadas pasando los casos test:
-* Clase Fecha.
-* Clase CardTest (Requiere refactorizar)
+* Clase Fecha. [EjerciciosPOO]
+* Clase CardTest (Requiere refactorizar).  [KataBowling]
