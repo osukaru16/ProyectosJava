@@ -2,4 +2,5 @@
 
 
 Clases terminadas pasando los casos test:
-clase Fecha.
+* Clase Fecha.
+* Clase CardTest (Requiere refactorizar)
