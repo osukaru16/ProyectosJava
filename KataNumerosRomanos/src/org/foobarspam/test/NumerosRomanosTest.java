@@ -54,12 +54,42 @@ public class NumerosRomanosTest {
 	
 	
 	
+	@Test
+	public void testMil() {
+		
+		CalculaNumeroRomano numeroRomano = new CalculaNumeroRomano("M");
+		
+		assertEquals(1000, numeroRomano.getValorDecimal());
+
+		
+		
+	}
 	
 	
 	
 	
+	@Test
+	public void test1888() {
+		
+		CalculaNumeroRomano numeroRomano = new CalculaNumeroRomano("MDCCCLXXXVIII");
+		
+		assertEquals(1888, numeroRomano.getValorDecimal());
+
+		
+		
+	}
 	
 	
+	@Test
+	public void test999() {
+		
+		CalculaNumeroRomano numeroRomano = new CalculaNumeroRomano("DCDLXLIX");
+		
+		assertEquals(999, numeroRomano.getValorDecimal());
+
+		
+		
+	}
 	
 	
 	

@@ -29,6 +29,43 @@ public class PruebasBuscador {
 		System.out.println(numRomano.getEncontradoStart()+" "+numRomano.getEncontradoEnd());
 
 		System.out.println(numRomano.cojerEncontrado()+"\nNevo: "+numRomano.quitarEncontrado());
+		
+		
+		//private String patronBusqueda ="(C[DM])|(X[LC])|(I[VX])"; 
+		
+		BuscaPatrones buscador = new BuscaPatrones("(C[DM])|(X[LC])|(I[VX])","IV");
+		
+		
+		System.out.println("Test_________");
+
+		System.out.println(buscador.getTexto());
+		
+		System.out.println(buscador.getEncontrado());
+		
+		System.out.println(buscador.getPrincipio());
+		
+		System.out.println(buscador.getFinal());
+		
+		System.out.println(buscador.getValorEncontrado());
+
+		//System.out.println(buscador.getNuevoTexto());
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		 
 		 
 

@@ -10,10 +10,16 @@ public class CalculaNumeroRomano {
 	private String numeroRomano = "";
 	//private int contadorGeneral=0;
 	private String patronBusqueda ="(C[DM])|(X[LC])|(I[VX])"; 
+	
+	
+	private BuscaPatrones buscador= null;
 
 	public CalculaNumeroRomano(String numeroRomano) {
 		
 		this.numeroRomano = numeroRomano;
+		
+		this.buscador = new BuscaPatrones(this.patronBusqueda, this.numeroRomano);
+		
 		
 	}
 	
@@ -29,6 +35,7 @@ public class CalculaNumeroRomano {
 	
 	public void setNumeroRomano(String numeroRomano){
 		this.numeroRomano = numeroRomano;
+		this.buscador.setTexto(this.numeroRomano);
 	}
 	
 	
@@ -47,176 +54,112 @@ public class CalculaNumeroRomano {
 	
 	
 	
-	
+
 	private int pasaDecimal(){
 		String numeroRomano = this.numeroRomano;
-		
+		String patronEncontrado = null;
+
 		int total=0;
+
 		
-		
-		
-		while(comprovador()){
+		//System.out.println(this.buscador.getEncontrado());
+
+		while(this.buscador.getEncontrado()){
+			patronEncontrado = this.buscador.getValorEncontrado();
+
+
+			total+= conversor(patronEncontrado,1) - conversor(patronEncontrado,0);
+
+			numeroRomano= this.buscador.getNuevoTexto().trim();
+			this.buscador.setTexto(numeroRomano);
 			
 			
-				total+=conversor(this.cojerEncontrado(),1)-conversor(this.cojerEncontrado(),0);
-				
-				numeroRomano= this.quitarEncontrado();
-				numeroRomano.trim();
-				
+			
+
 		}
+		//System.out.println(this.buscador.getEncontrado());
+
+
 		
+		total+=conversor(numeroRomano);
 		
-		for(int i=0; i<numeroRomano.length(); i++ ){
-			total+=conversor(numeroRomano,i);
-		}
-		
-		
+
+
 		return total;
-		
+
 	}
 	
 	
-	
-	
-		private int conversor(String numeroRomano, int posicion){
-			NumerosRomanos numero;
-			Character letra;
 
-			letra = numeroRomano.charAt(posicion);
+
+	private int conversor(String numeroRomano){
+		int sumador =0;
+		NumerosRomanos numero;
+		Character letra;
+
+
+		for(int i=0; i<numeroRomano.length(); i++ ){
+			letra = numeroRomano.charAt(i);
 			numero = NumerosRomanos.valueOf(letra.toString());
-
-
-			return numero.getValor();
+			sumador+=numero.getValor();
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	private int encontradoStart() {
 
-		if(this.comprovador()){
-			return this.coincidencia().start();
-		}
-		else{
-			return 0;
-		}
+
+		return sumador;
+	}
+
+
+	
+	
+	
+	
+	private int conversor(String numeroRomano, int posicion){
+		NumerosRomanos numero;
+		Character letra;
+
+		letra = numeroRomano.charAt(posicion);
+		numero = NumerosRomanos.valueOf(letra.toString());
 		
-	}*/
-		
-		
-		
-		public int encontradoStart() {
+		return numero.getValor();
+	}
 
-			Pattern p = Pattern.compile(this.patronBusqueda);
-
-			Matcher m = p.matcher(this.numeroRomano);
-
-
-			if(m.find()){return m.start();}
-			else{return 0;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 			
-		}
-		
-		
-		
-		
-		public int encontradoEnd() {
 
-			Pattern p = Pattern.compile(this.patronBusqueda);
+		
+		
+		
+		
+		
+	
 
-			Matcher m = p.matcher(this.numeroRomano);
-
-
-			if(m.find()){return m.end();}
-			else{return 0;}
-			
-		}
-		
-		
-		
-		
-		
-	/*
-	
-	private int encontradoEnd() {
-
-		if(this.comprovador()){
-			return this.coincidencia().end();
-		}
-		else{return 0;}
-		
-	}
-	
-	
-	
-	
-	private boolean comprovador() {
-		return this.coincidencia().find();
-	}
-	
-	
-	*/
-	
-		
-		
-		public boolean comprovador() {
-
-			Pattern p = Pattern.compile(this.patronBusqueda);
-
-			Matcher m = p.matcher(this.numeroRomano);
-
-			return m.find();
-
-		}	
-		
-		
-		
-		
-		
-		
-	
-	
-	private Pattern patron(){
-		return Pattern.compile(this.patronBusqueda);
-	}
-	
-	
-	private Matcher coincidencia(){
-		return this.patron().matcher(this.numeroRomano);
-	}
 	
 	
 	
@@ -224,32 +167,22 @@ public class CalculaNumeroRomano {
 	
 	
 	
-	
-	
-	private String cojerEncontrado(){
-		String nuevoNumero = "";
-		
-		nuevoNumero = this.numeroRomano.substring(this.encontradoStart(), this.encontradoEnd());
-		
-		return nuevoNumero;
-		
-	}
-	
-	
-	private String quitarEncontrado(){
-		String nuevoNumero = "";
-		
-		nuevoNumero = this.numeroRomano.replaceFirst(this.cojerEncontrado(), "");
-		
-		return nuevoNumero;
-		
-	}
 
 
 
 
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
