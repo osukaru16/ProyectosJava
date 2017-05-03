@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emt:carrera xmlns:emt="https://api.mobipalma.mobi/docs/" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="https://api.mobipalma.mobi/docs/ cotxox.xsd ">
+
+  <tarjetaCredito>5482341234567890MasterCard</tarjetaCredito>
+  <origen>Arenel de Palma</origen>
+  <destino>Aeropert</destino>
+  <distancia>20.0</distancia>
+  <tiempoEsperadoMinutos>10</tiempoEsperadoMinutos>
+  <tiempoCarrera>10</tiempoCarrera>
+  <costeEsperado>12.0</costeEsperado>
+  <costeTotal>15.0</costeTotal>
+  <propina>1</propina>
+  <conductor>
+    <nombre>Juan</nombre>
+    <matricula>0150MWT</matricula>
+    <modelo>Opel Kadett</modelo>
+    <valoraciones>5 4</valoraciones>
+    <ocupado>true</ocupado>
+    <valoracionMedia>4.5</valoracionMedia>
+  </conductor>
+</emt:carrera>
